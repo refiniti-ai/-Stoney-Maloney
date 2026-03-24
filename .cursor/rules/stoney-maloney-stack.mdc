@@ -1,0 +1,18 @@
+---
+description: Tech stack and conventions for Stoney Maloney (Next.js, Shopify, Firebase)
+alwaysApply: true
+---
+
+# Stoney Maloney Stack
+
+- **Next.js 14** (App Router), **TypeScript**, **Tailwind CSS**
+- **Shopify Storefront API** for products, cart, checkout (headless)
+- **Firebase Hosting** for deployment (static export, `out/` folder)
+
+## Conventions
+
+- Use `output: 'export'` in next.config.js for static build compatible with Firebase Hosting
+- Shopify data fetched in server components via `@/lib/shopify`
+- Store domain: `stoney-maloney-usa.myshopify.com`
+- Firebase project ID: `stoney-maloney`
+- Use `NEXT_PUBLIC_` prefix for any client-side env vars
