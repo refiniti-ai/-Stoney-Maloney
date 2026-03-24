@@ -1,14 +1,31 @@
-/* Base / reset */
+/* Stoney Maloney – Base & typography */
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
-body { margin: 0; font-family: system-ui, -apple-system, sans-serif; line-height: 1.5; color: #1a1a1a; }
+
+:root {
+  --color-orange: #E85D04;
+  --color-orange-dark: #C94D03;
+  --color-cream: #FDF8F3;
+  --color-cream-dark: #F5EDE4;
+  --color-text: #2C2419;
+  --color-text-muted: #6B5B4F;
+  --color-white: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; line-height: 1.2; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
 ul { list-style: none; margin: 0; padding: 0; }
 button { font: inherit; cursor: pointer; }
 
-/* RTE */
-.rte { line-height: 1.7; }
+.rte { line-height: 1.8; }
 .rte p { margin: 0 0 1em; }
 .rte a { text-decoration: underline; }

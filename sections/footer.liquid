@@ -1,8 +1,14 @@
-<footer class="footer" role="contentinfo">
+<footer class="footer footer--stoney" role="contentinfo">
   <div class="footer__inner">
     <div class="footer__grid">
       <div class="footer__brand">
-        <span class="footer__logo">{{ section.settings.logo_text | default: shop.name }}</span>
+        <a href="{{ routes.root_url }}" class="footer__logo-link">
+          {% if section.settings.logo != blank %}
+            {{ section.settings.logo | image_url: width: 180 | image_tag: class: 'footer__logo-img' }}
+          {% else %}
+            <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" class="footer__logo-img" width="140">
+          {% endif %}
+        </a>
         {% if section.settings.tagline != blank %}
           <p class="footer__tagline">{{ section.settings.tagline }}</p>
         {% endif %}
@@ -10,12 +16,32 @@
 
       {% if linklists[section.settings.menu].links.size > 0 %}
         <div class="footer__links">
-          <h4 class="footer__heading">{{ section.settings.menu_heading | default: 'Quick links' }}</h4>
+          <h4 class="footer__heading">{{ section.settings.menu_heading }}</h4>
           <ul>
             {% for link in linklists[section.settings.menu].links %}
               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {% endfor %}
           </ul>
+        </div>
+      {% endif %}
+
+      <div class="footer__social">
+        {% if section.settings.instagram != blank %}
+          <a href="https://instagram.com/{{ section.settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        {% endif %}
+        {% if section.settings.contact_email != blank %}
+          <a href="mailto:{{ section.settings.contact_email }}">Contact</a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_newsletter %}
+        <div class="footer__newsletter">
+          <h4 class="footer__heading">{{ section.settings.newsletter_heading }}</h4>
+          {% form 'customer', class: 'footer__newsletter-form' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email" name="contact[email]" placeholder="{{ section.settings.newsletter_placeholder }}" required class="footer__newsletter-input">
+            <button type="submit" class="footer__newsletter-btn">{{ section.settings.newsletter_button }}</button>
+          {% endform %}
         </div>
       {% endif %}
     </div>
@@ -32,10 +58,9 @@
   "class": "section-footer",
   "settings": [
     {
-      "type": "text",
-      "id": "logo_text",
-      "label": "Brand name",
-      "default": "Stoney Maloney USA"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
     },
     {
       "type": "textarea",
@@ -52,6 +77,40 @@
       "id": "menu_heading",
       "label": "Menu heading",
       "default": "Quick links"
+    },
+    {
+      "type": "text",
+      "id": "instagram",
+      "label": "Instagram handle (no @)"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show newsletter signup",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Stay in touch"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email placeholder",
+      "default": "Your email"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button",
+      "label": "Subscribe button",
+      "default": "Subscribe"
     }
   ]
 }

@@ -1,0 +1,95 @@
+<section class="ingredients">
+  <div class="ingredients__inner">
+    <h2 class="ingredients__title">{{ section.settings.heading }}</h2>
+    <div class="ingredients__grid">
+      {% for block in section.blocks %}
+        <div class="ingredients__item" {{ block.shopify_attributes }}>
+          <div class="ingredients__media">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 200 | image_tag }}
+            {% else %}
+              <div class="ingredients__placeholder">{{ block.settings.name }}</div>
+            {% endif %}
+          </div>
+          <h3 class="ingredients__name">{{ block.settings.name }}</h3>
+          <p class="ingredients__desc">{{ block.settings.description }}</p>
+          <p class="ingredients__benefit">{{ block.settings.benefit }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredient Transparency",
+  "class": "section-ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ingredient Transparency"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "benefit",
+          "label": "Benefit"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "name": "Grass-fed beef tallow",
+            "description": "Rendered from pasture-raised cattle. Rich in vitamins A, D, E, K.",
+            "benefit": "Deep nourishment & skin barrier support"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "name": "Beeswax",
+            "description": "Natural wax that locks in moisture.",
+            "benefit": "Protective, emollient"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "name": "Essential oils",
+            "description": "Carefully selected for scent and therapeutic benefits.",
+            "benefit": "Aromatic, soothing"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

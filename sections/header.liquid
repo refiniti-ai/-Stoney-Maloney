@@ -1,23 +1,24 @@
-<header class="header" role="banner">
+<header class="header header--stoney" role="banner">
   <div class="header__inner">
     <a href="{{ routes.root_url }}" class="header__logo">
-      <span class="header__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 200 | image_tag: class: 'header__logo-img', loading: 'eager', widths: '120, 200' }}
+      {% else %}
+        <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" class="header__logo-img" width="140">
+      {% endif %}
     </a>
 
     <nav class="header__nav" role="navigation">
       <ul class="header__nav-list">
         {% for link in linklists[section.settings.menu].links %}
-          <li>
-            <a href="{{ link.url }}" class="header__nav-link">{{ link.title }}</a>
-          </li>
+          <li><a href="{{ link.url }}" class="header__nav-link">{{ link.title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
 
     <div class="header__actions">
       <a href="{{ routes.cart_url }}" class="header__cart" aria-label="Cart">
-        <span class="header__cart-icon">Cart</span>
-        <span class="header__cart-count">({{ cart.item_count }})</span>
+        Cart ({{ cart.item_count }})
       </a>
     </div>
   </div>
@@ -29,10 +30,10 @@
   "class": "section-header",
   "settings": [
     {
-      "type": "text",
-      "id": "logo_text",
-      "label": "Logo text",
-      "default": "Stoney Maloney USA"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "Upload logo or leave blank to use default"
     },
     {
       "type": "link_list",

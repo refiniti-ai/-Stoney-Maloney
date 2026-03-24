@@ -1,0 +1,126 @@
+<section class="tallow-story" id="what-is-tallow">
+  <div class="tallow-story__inner">
+    <h2 class="tallow-story__title">{{ section.settings.heading }}</h2>
+
+    <div class="tallow-story__flow">
+      <div class="tallow-story__step">
+        <div class="tallow-story__step-visual">
+          {% if section.settings.step1_image != blank %}
+            {{ section.settings.step1_image | image_url: width: 400 | image_tag }}
+          {% else %}
+            <div class="tallow-story__placeholder">{{ section.settings.step1_label }}</div>
+          {% endif %}
+        </div>
+        <h3 class="tallow-story__step-title">{{ section.settings.step1_label }}</h3>
+        <p class="tallow-story__step-desc">{{ section.settings.step1_text }}</p>
+      </div>
+
+      <div class="tallow-story__arrow">→</div>
+
+      <div class="tallow-story__step">
+        <div class="tallow-story__step-visual">
+          {% if section.settings.step2_image != blank %}
+            {{ section.settings.step2_image | image_url: width: 400 | image_tag }}
+          {% else %}
+            <div class="tallow-story__placeholder">{{ section.settings.step2_label }}</div>
+          {% endif %}
+        </div>
+        <h3 class="tallow-story__step-title">{{ section.settings.step2_label }}</h3>
+        <p class="tallow-story__step-desc">{{ section.settings.step2_text }}</p>
+      </div>
+
+      <div class="tallow-story__arrow">→</div>
+
+      <div class="tallow-story__step">
+        <div class="tallow-story__step-visual">
+          {% if section.settings.step3_image != blank %}
+            {{ section.settings.step3_image | image_url: width: 400 | image_tag }}
+          {% else %}
+            <div class="tallow-story__placeholder">{{ section.settings.step3_label }}</div>
+          {% endif %}
+        </div>
+        <h3 class="tallow-story__step-title">{{ section.settings.step3_label }}</h3>
+        <p class="tallow-story__step-desc">{{ section.settings.step3_text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "What Is Tallow?",
+  "class": "section-tallow-story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "What Is Tallow?"
+    },
+    {
+      "type": "header",
+      "content": "Step 1 – Raw ingredient"
+    },
+    {
+      "type": "text",
+      "id": "step1_label",
+      "label": "Label",
+      "default": "Grass-fed beef fat"
+    },
+    {
+      "type": "textarea",
+      "id": "step1_text",
+      "label": "Description",
+      "default": "Pure, nutrient-dense fat from pasture-raised cattle."
+    },
+    {
+      "type": "image_picker",
+      "id": "step1_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Step 2 – Rendered"
+    },
+    {
+      "type": "text",
+      "id": "step2_label",
+      "label": "Label",
+      "default": "Rendered nutrient-rich tallow"
+    },
+    {
+      "type": "textarea",
+      "id": "step2_text",
+      "label": "Description",
+      "default": "Slow-rendered to preserve vitamins A, D, E, and K."
+    },
+    {
+      "type": "image_picker",
+      "id": "step2_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Step 3 – Product"
+    },
+    {
+      "type": "text",
+      "id": "step3_label",
+      "label": "Label",
+      "default": "Stoney Maloney skincare"
+    },
+    {
+      "type": "textarea",
+      "id": "step3_text",
+      "label": "Description",
+      "default": "Premium skincare that nourishes and restores naturally."
+    },
+    {
+      "type": "image_picker",
+      "id": "step3_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [{ "name": "What Is Tallow?" }]
+}
+{% endschema %}

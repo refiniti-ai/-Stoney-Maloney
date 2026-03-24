@@ -1,0 +1,66 @@
+<section class="retail-events">
+  <div class="retail-events__inner">
+    <h2 class="retail-events__title">{{ section.settings.heading }}</h2>
+    <p class="retail-events__subtitle">{{ section.settings.subtitle }}</p>
+    <div class="retail-events__media">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1000 | image_tag: class: 'retail-events__img' }}
+      {% else %}
+        <div class="retail-events__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+      {% endif %}
+    </div>
+    <div class="retail-events__ctas">
+      <a href="{{ section.settings.events_url | default: '#' }}" class="retail-events__btn">{{ section.settings.events_btn_label }}</a>
+      <a href="{{ section.settings.follow_url | default: '#' }}" class="retail-events__btn retail-events__btn--secondary">{{ section.settings.follow_btn_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retail / Events",
+  "class": "section-retail-events",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find Us at Events"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Visit our booth at expos and markets."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Event / booth image"
+    },
+    {
+      "type": "text",
+      "id": "events_btn_label",
+      "label": "Events button label",
+      "default": "Find us at events"
+    },
+    {
+      "type": "url",
+      "id": "events_url",
+      "label": "Events link"
+    },
+    {
+      "type": "text",
+      "id": "follow_btn_label",
+      "label": "Follow button label",
+      "default": "Follow our journey"
+    },
+    {
+      "type": "url",
+      "id": "follow_url",
+      "label": "Follow link (e.g. Instagram)"
+    }
+  ],
+  "presets": [{ "name": "Retail / Events" }]
+}
+{% endschema %}

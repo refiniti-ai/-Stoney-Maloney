@@ -1,0 +1,125 @@
+<section class="product-showcase">
+  <div class="product-showcase__inner">
+    <h2 class="product-showcase__title">{{ section.settings.heading }}</h2>
+
+    {% if section.settings.collection != blank %}
+      {% assign collection = collections[section.settings.collection] %}
+      {% for product in collection.products limit: 2 %}
+        <article class="product-showcase__item">
+          <div class="product-showcase__media">
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 800 | image_tag: class: 'product-showcase__img', loading: 'lazy', widths: '400, 600, 800' }}
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag: 'product-showcase__placeholder' }}
+            {% endif %}
+          </div>
+          <div class="product-showcase__info">
+            <h3 class="product-showcase__name">{{ product.title }}</h3>
+            <p class="product-showcase__desc">{{ product.description | strip_html | truncate: 180 }}</p>
+            {% if product.metafields.custom.ingredient_highlights != blank %}
+              <p class="product-showcase__ingredients"><strong>Ingredients:</strong> {{ product.metafields.custom.ingredient_highlights }}</p>
+            {% endif %}
+            <p class="product-showcase__price">{{ product.price | money }}</p>
+            <a href="{{ product.url }}" class="product-showcase__btn">Add to Cart</a>
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      {% comment %} Fallback when no collection selected - show placeholder product blocks {% endcomment %}
+      {% for block in section.blocks %}
+        <article class="product-showcase__item" {{ block.shopify_attributes }}>
+          <div class="product-showcase__media">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 800 | image_tag: class: 'product-showcase__img' }}
+            {% else %}
+              <div class="product-showcase__placeholder">Product image</div>
+            {% endif %}
+          </div>
+          <div class="product-showcase__info">
+            <h3 class="product-showcase__name">{{ block.settings.title }}</h3>
+            <p class="product-showcase__desc">{{ block.settings.description }}</p>
+            {% if block.settings.ingredients != blank %}<p class="product-showcase__ingredients">{{ block.settings.ingredients }}</p>{% endif %}
+            <a href="{{ block.settings.url | default: '#' }}" class="product-showcase__btn">Add to Cart</a>
+          </div>
+        </article>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Showcase",
+  "class": "section-product-showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Shows first 2 products. Leave blank to use manual blocks below."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "ingredients",
+          "label": "Ingredient highlights"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product image"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Product link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Showcase",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "title": "Miracle Recovery Rub",
+            "description": "Nourishing tallow-based balm for skin recovery. Deeply moisturizes and soothes.",
+            "ingredients": "Grass-fed tallow, beeswax, essential oils"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "Tallow Lip Balm",
+            "description": "Hydrating lip care with the same nourishing ingredients.",
+            "ingredients": "Tallow, beeswax, natural flavor"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

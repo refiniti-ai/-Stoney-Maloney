@@ -4,8 +4,8 @@
     "theme_name": "Stoney Maloney",
     "theme_version": "1.0.0",
     "theme_author": "Stoney Maloney USA",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
+    "theme_documentation_url": "https://help.shopify.com/",
+    "theme_support_url": "https://help.shopify.com/"
   },
   {
     "name": "Colors",
@@ -14,7 +14,7 @@
         "type": "color",
         "id": "color_accent",
         "label": "Accent color",
-        "default": "#1a1a1a"
+        "default": "#E85D04"
       }
     ]
   }

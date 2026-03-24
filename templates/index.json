@@ -3,22 +3,216 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "heading": "Welcome to Stoney Maloney USA",
-        "subheading": "Quality products for you",
-        "height": 500,
-        "background": "#1a1a1a",
-        "text_color": "#ffffff"
+        "heading": "Nature's Healing Power, Refined.",
+        "subheading": "Tallow-based skincare designed to nourish, restore, and soothe.",
+        "button_shop_label": "Shop Products",
+        "button_learn_label": "Learn About Tallow",
+        "background": "#E85D04",
+        "text_color": "#FDF8F3"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "what_is_tallow": {
+      "type": "what-is-tallow",
       "settings": {
-        "heading": "Featured products",
-        "products_to_show": 4,
-        "columns": 4,
-        "show_view_all": true
+        "heading": "What Is Tallow?",
+        "step1_label": "Grass-fed beef fat",
+        "step1_text": "Pure, nutrient-dense fat from pasture-raised cattle.",
+        "step2_label": "Rendered nutrient-rich tallow",
+        "step2_text": "Slow-rendered to preserve vitamins A, D, E, and K.",
+        "step3_label": "Stoney Maloney skincare",
+        "step3_text": "Premium skincare that nourishes and restores naturally."
+      }
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Deep Skin Nourishment",
+            "description": "Rich in Vitamins A, D, E, and K for radiant, healthy skin.",
+            "icon_fallback": "✦"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Soothes Irritation",
+            "description": "Calms sensitive skin and supports natural healing.",
+            "icon_fallback": "◆"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports Natural Barrier",
+            "description": "Helps maintain your skin's protective moisture barrier.",
+            "icon_fallback": "◇"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Chemical-Free Moisturizing",
+            "description": "Real ingredients. No fillers. Just pure nourishment.",
+            "icon_fallback": "●"
+          }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4"],
+      "settings": {
+        "heading": "Benefits of Tallow"
+      }
+    },
+    "product_showcase": {
+      "type": "product-showcase",
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "title": "Miracle Recovery Rub",
+            "description": "Nourishing tallow-based balm for skin recovery. Deeply moisturizes and soothes.",
+            "ingredients": "Grass-fed tallow, beeswax, essential oils"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "title": "Tallow Lip Balm",
+            "description": "Hydrating lip care with the same nourishing ingredients.",
+            "ingredients": "Tallow, beeswax, natural flavor"
+          }
+        }
+      },
+      "block_order": ["product_1", "product_2"],
+      "settings": {
+        "heading": "Our Products"
+      }
+    },
+    "real_results": {
+      "type": "real-results",
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "title": "Athlete Recovery",
+            "description": "Soothe muscles and skin after intense workouts."
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "title": "Dry Skin Repair",
+            "description": "Restore moisture to parched, irritated skin."
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "title": "Lips & Hydration",
+            "description": "Keep lips soft and nourished year-round."
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "title": "Natural Skincare Routine",
+            "description": "Simple, honest skincare with real ingredients."
+          }
+        }
+      },
+      "block_order": ["uc1", "uc2", "uc3", "uc4"],
+      "settings": {
+        "heading": "Real Results",
+        "subtitle": "Where Stoney Maloney shines"
+      }
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "settings": {
+        "heading": "Our Story",
+        "body": "<p>A simple mission to bring back traditional skincare made with real ingredients.</p><p>We focus on natural ingredients, small-batch production, and honest skincare—healing first.</p>",
+        "value1": "Natural ingredients",
+        "value2": "Small-batch production",
+        "value3": "Honest skincare",
+        "value4": "Healing first"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Grass-fed beef tallow",
+            "description": "Rendered from pasture-raised cattle. Rich in vitamins A, D, E, K.",
+            "benefit": "Deep nourishment & skin barrier support"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Beeswax",
+            "description": "Natural wax that locks in moisture.",
+            "benefit": "Protective, emollient"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Essential oils",
+            "description": "Carefully selected for scent and therapeutic benefits.",
+            "benefit": "Aromatic, soothing"
+          }
+        }
+      },
+      "block_order": ["i1", "i2", "i3"],
+      "settings": {
+        "heading": "Ingredient Transparency"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This stuff works better than anything I've tried.",
+            "author": "Sarah M."
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My skin healed in days.",
+            "author": "Mike T."
+          }
+        }
+      },
+      "block_order": ["t1", "t2"],
+      "settings": {
+        "heading": "What People Say"
+      }
+    },
+    "retail_events": {
+      "type": "retail-events",
+      "settings": {
+        "heading": "Find Us at Events",
+        "subtitle": "Visit our booth at expos and markets.",
+        "events_btn_label": "Find us at events",
+        "follow_btn_label": "Follow our journey"
       }
     }
   },
-  "order": ["hero", "featured_collection"]
+  "order": [
+    "hero",
+    "what_is_tallow",
+    "benefits",
+    "product_showcase",
+    "real_results",
+    "brand_story",
+    "ingredients",
+    "testimonials",
+    "retail_events"
+  ]
 }

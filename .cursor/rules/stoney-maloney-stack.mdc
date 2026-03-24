@@ -3,18 +3,20 @@ description: Tech stack and conventions for Stoney Maloney Shopify theme (Liquid
 alwaysApply: true
 ---
 
-# Stoney Maloney – Shopify Liquid Theme
+# Stoney Maloney – Premium Skincare Theme
 
 - **Liquid** – All markup and logic
-- **CSS** – Custom styles (no Tailwind, no Bootstrap)
-- **JavaScript** – Vanilla JS only, no React/frameworks
-- **100% Shopify-hosted** – No Firebase, Vercel, or external hosting
+- **CSS** – Custom styles (Playfair Display + Inter typography)
+- **JavaScript** – Vanilla JS only
+- **Design** – Bold orange (#E85D04), cream (#FDF8F3), Savor-inspired storytelling
 
-## Conventions
+## Brand
 
-- Use sections for merchant-editable content (header, footer, hero, product grids)
-- Use snippets for reusable Liquid (pagination, icons, etc.)
-- JSON templates for page structure (index, collection, product, page)
-- Section schemas define theme editor settings
-- Store: stoney-maloney-usa.myshopify.com
-- Design: clean, minimal, high-end aesthetic
+- Natural tallow-based skincare
+- Products: Miracle Recovery Rub, Tallow Lip Balm
+- Tone: Natural, healing, premium, warm
+- Client assets in `client_assets/` (logo, product shots, pattern)
+
+## Sections
+
+Hero, What Is Tallow, Benefits, Product Showcase, Real Results, Brand Story, Ingredients, Testimonials, Retail/Events, Footer. All editable in theme editor.
