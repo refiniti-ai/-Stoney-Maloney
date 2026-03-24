@@ -1,0 +1,21 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Stoney Maloney",
+    "theme_version": "1.0.0",
+    "theme_author": "Stoney Maloney USA",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent color",
+        "default": "#1a1a1a"
+      }
+    ]
+  }
+]

@@ -1,0 +1,45 @@
+<header class="header" role="banner">
+  <div class="header__inner">
+    <a href="{{ routes.root_url }}" class="header__logo">
+      <span class="header__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
+    </a>
+
+    <nav class="header__nav" role="navigation">
+      <ul class="header__nav-list">
+        {% for link in linklists[section.settings.menu].links %}
+          <li>
+            <a href="{{ link.url }}" class="header__nav-link">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a href="{{ routes.cart_url }}" class="header__cart" aria-label="Cart">
+        <span class="header__cart-icon">Cart</span>
+        <span class="header__cart-count">({{ cart.item_count }})</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "Stoney Maloney USA"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

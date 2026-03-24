@@ -1,0 +1,15 @@
+<section class="page-404">
+  <div class="page-404__inner">
+    <h1>{{ 'general.404.title' | t }}</h1>
+    <p>{{ 'general.404.subtext' | t }}</p>
+    <a href="{{ routes.root_url }}" class="page-404__link">Return to home</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404",
+  "class": "section-main-404",
+  "settings": []
+}
+{% endschema %}

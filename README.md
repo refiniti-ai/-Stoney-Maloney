@@ -1,111 +1,85 @@
-# Stoney Maloney USA
+# Stoney Maloney USA – Shopify Theme
 
-Headless Shopify storefront for [Stoney Maloney USA](https://stoney-maloney-usa.myshopify.com/), hosted on Firebase Hosting.
+Custom Shopify Liquid theme for [Stoney Maloney USA](https://stoney-maloney-usa.myshopify.com/). Built with Liquid, CSS, and JavaScript. 100% hosted on Shopify.
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript, Tailwind CSS
-- **Commerce**: Shopify Storefront API (headless)
-- **Hosting**: Firebase Hosting
-- **Version Control**: GitHub
-- **IDE**: Cursor
-
-## Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- Firebase CLI (`npm i -g firebase-tools`)
-- Shopify store admin access
-
-## Setup
-
-### 1. Install Dependencies
-
-```bash
-npm install
-```
-
-### 2. Shopify Storefront API Token
-
-1. Go to [Shopify Admin](https://stoney-maloney-usa.myshopify.com/admin) → **Settings** → **Apps and sales channels**
-2. Click **Develop apps** → **Create an app** (or use an existing custom app)
-3. Configure **Storefront API** scopes (at minimum: `unauthenticated_read_product_listings`, `unauthenticated_read_product_inventory`)
-4. Install the app and copy the **Storefront API access token**
-
-### 3. Environment Variables
-
-Copy the example env file and fill in your values:
-
-```bash
-cp .env.example .env.local
-```
-
-Edit `.env.local`:
-
-```
-NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=stoney-maloney-usa.myshopify.com
-NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=your_token_here
-```
-
-### 4. Firebase Login (for local deploy)
-
-```bash
-firebase login
-```
-
-Project is already set to `stoney-maloney` in `.firebaserc`.
-
-## Development
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-## Build & Deploy
-
-### Local deploy
-
-```bash
-npm run deploy
-```
-
-This builds the Next.js app and deploys the `out/` folder to Firebase Hosting.
-
-### GitHub Actions (CI/CD)
-
-1. **Firebase token**: Run `firebase login:ci` locally and add the output as `FIREBASE_TOKEN` in GitHub repo **Settings → Secrets and variables → Actions**.
-
-2. **Shopify secrets** (for build-time product data):
-   - `SHOPIFY_STORE_DOMAIN` = `stoney-maloney-usa.myshopify.com`
-   - `SHOPIFY_STOREFRONT_ACCESS_TOKEN` = your Storefront API token
-
-3. Push to `main` to trigger deploy.
+- **Liquid** – Shopify's templating language
+- **CSS** – Custom styles (no framework)
+- **JavaScript** – Vanilla JS for interactivity
+- **Hosting** – Shopify (theme runs entirely on Shopify servers)
 
 ## Project Structure
 
 ```
-├── app/                 # Next.js App Router
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── products/
-├── components/          # Reusable UI components
-├── lib/                 # Shopify API client
-├── firebase.json        # Firebase Hosting config
-└── .firebaserc          # Firebase project (stoney-maloney)
+├── assets/          # CSS, JS, images
+│   ├── base.css
+│   ├── theme.css
+│   └── theme.js
+├── config/          # Theme settings
+│   ├── settings_schema.json
+│   └── settings_data.json
+├── layout/
+│   └── theme.liquid # Main layout
+├── locales/
+│   └── en.default.json
+├── sections/        # Custom sections (editable in theme editor)
+│   ├── header.liquid
+│   ├── footer.liquid
+│   ├── hero.liquid
+│   ├── featured-collection.liquid
+│   ├── main-collection.liquid
+│   ├── main-product.liquid
+│   ├── main-page.liquid
+│   └── main-404.liquid
+├── snippets/        # Reusable Liquid snippets
+│   └── pagination.liquid
+└── templates/       # Page templates (JSON)
+    ├── index.json
+    ├── collection.json
+    ├── product.json
+    ├── page.json
+    └── 404.json
 ```
 
-## Adding Requirements / Blueprint
+## Development
 
-When you have a website blueprint or requirements document, add it to the repo (e.g. `docs/blueprint.md` or `REQUIREMENTS.md`) so the frontend can be refined accordingly.
+### Shopify CLI
 
-## Pushing to GitHub
+1. Install [Shopify CLI](https://shopify.dev/docs/themes/tools/cli/install).
+2. From the project root:
 
 ```bash
-git add .
-git commit -m "Initial Stoney Maloney storefront setup"
-git push -u origin main
+shopify theme dev
 ```
 
-After pushing, configure GitHub Actions secrets (see CI/CD section above) to enable automatic deploys.
+This starts a local preview and syncs changes to your store.
+
+### Push theme to Shopify
+
+```bash
+shopify theme push
+```
+
+### Pull existing theme
+
+```bash
+shopify theme pull
+```
+
+## Sections (Theme Editor)
+
+All sections are customizable in the theme editor:
+
+- **Header** – Logo text, navigation menu
+- **Footer** – Brand, tagline, footer menu
+- **Hero** – Heading, subheading, CTA, background image, colors
+- **Featured collection** – Collection picker, products to show, columns
+
+## Adding Custom Sections
+
+Create new `.liquid` files in `sections/` with a `{% schema %}` block. Add them to templates via the theme editor or by editing the JSON templates.
+
+## Main menu
+
+Create a navigation menu named **Main menu** in Shopify Admin (Online Store → Navigation) for the header links to appear.

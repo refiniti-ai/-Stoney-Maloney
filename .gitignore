@@ -1,21 +1,6 @@
-# Dependencies
-node_modules/
-
-# Build output
-dist/
-out/
-.next/
-
-# Firebase
-.firebase/
-firebase-debug.log
-firebase-debug.*.log
-firestore-debug.log
-
-# Environment / secrets
-.env
-.env.local
-.env.*.local
+# OS
+.DS_Store
+Thumbs.db
 
 # IDE
 .idea/
@@ -23,11 +8,11 @@ firestore-debug.log
 *.swp
 *.swo
 
-# OS
-.DS_Store
-Thumbs.db
+# Shopify
+config/settings_data.json
+
+# Firebase (legacy)
+.firebase/
 
 # Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.log

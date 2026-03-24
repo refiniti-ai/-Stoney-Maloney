@@ -1,0 +1,11 @@
+<nav class="pagination" role="navigation" aria-label="Pagination">
+  <div class="pagination__inner">
+    {% if paginate.previous %}
+      <a href="{{ paginate.previous.url }}" class="pagination__prev">&larr; Previous</a>
+    {% endif %}
+    <span class="pagination__info">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+    {% if paginate.next %}
+      <a href="{{ paginate.next.url }}" class="pagination__next">Next &rarr;</a>
+    {% endif %}
+  </div>
+</nav>

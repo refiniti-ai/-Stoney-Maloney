@@ -1,0 +1,10 @@
+# Shopify Theme Configuration
+# Run: shopify theme dev (for local preview)
+# Run: shopify theme push (to upload to store)
+
+[build]
+  automatically_push_files = true
+  ignore = [
+    "node_modules/**",
+    ".git/**",
+  ]

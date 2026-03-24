@@ -1,0 +1,58 @@
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="footer__logo">{{ section.settings.logo_text | default: shop.name }}</span>
+        {% if section.settings.tagline != blank %}
+          <p class="footer__tagline">{{ section.settings.tagline }}</p>
+        {% endif %}
+      </div>
+
+      {% if linklists[section.settings.menu].links.size > 0 %}
+        <div class="footer__links">
+          <h4 class="footer__heading">{{ section.settings.menu_heading | default: 'Quick links' }}</h4>
+          <ul>
+            {% for link in linklists[section.settings.menu].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "section-footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Brand name",
+      "default": "Stoney Maloney USA"
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+    },
+    {
+      "type": "text",
+      "id": "menu_heading",
+      "label": "Menu heading",
+      "default": "Quick links"
+    }
+  ]
+}
+{% endschema %}

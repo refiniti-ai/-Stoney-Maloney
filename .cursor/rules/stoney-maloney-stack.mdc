@@ -1,18 +1,20 @@
 ---
-description: Tech stack and conventions for Stoney Maloney (Next.js, Shopify, Firebase)
+description: Tech stack and conventions for Stoney Maloney Shopify theme (Liquid, CSS, JS)
 alwaysApply: true
 ---
 
-# Stoney Maloney Stack
+# Stoney Maloney – Shopify Liquid Theme
 
-- **Next.js 14** (App Router), **TypeScript**, **Tailwind CSS**
-- **Shopify Storefront API** for products, cart, checkout (headless)
-- **Firebase Hosting** for deployment (static export, `out/` folder)
+- **Liquid** – All markup and logic
+- **CSS** – Custom styles (no Tailwind, no Bootstrap)
+- **JavaScript** – Vanilla JS only, no React/frameworks
+- **100% Shopify-hosted** – No Firebase, Vercel, or external hosting
 
 ## Conventions
 
-- Use `output: 'export'` in next.config.js for static build compatible with Firebase Hosting
-- Shopify data fetched in server components via `@/lib/shopify`
-- Store domain: `stoney-maloney-usa.myshopify.com`
-- Firebase project ID: `stoney-maloney`
-- Use `NEXT_PUBLIC_` prefix for any client-side env vars
+- Use sections for merchant-editable content (header, footer, hero, product grids)
+- Use snippets for reusable Liquid (pagination, icons, etc.)
+- JSON templates for page structure (index, collection, product, page)
+- Section schemas define theme editor settings
+- Store: stoney-maloney-usa.myshopify.com
+- Design: clean, minimal, high-end aesthetic

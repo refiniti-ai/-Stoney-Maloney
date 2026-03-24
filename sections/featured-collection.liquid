@@ -1,0 +1,87 @@
+{% if section.settings.collection != blank %}
+  {% assign collection = collections[section.settings.collection] %}
+  {% assign products_to_show = section.settings.products_to_show | default: 8 %}
+
+  <section class="featured-collection">
+    <div class="featured-collection__inner">
+      {% if section.settings.heading != blank %}
+        <h2 class="featured-collection__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      <div class="featured-collection__grid" style="--columns: {{ section.settings.columns }};">
+        {% for product in collection.products limit: products_to_show %}
+          <article class="product-card">
+            <a href="{{ product.url }}" class="product-card__link">
+              <div class="product-card__image">
+                {% if product.featured_image %}
+                  {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'product-card__img', widths: '165, 360, 533, 720' }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+                {% endif %}
+              </div>
+              <div class="product-card__info">
+                <h3 class="product-card__title">{{ product.title }}</h3>
+                <span class="product-card__price">{{ product.price | money }}</span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+
+      {% if section.settings.show_view_all and collection.products.size > 0 %}
+        <div class="featured-collection__actions">
+          <a href="{{ collection.url }}" class="featured-collection__button">View all</a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "class": "section-featured-collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured products"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Columns (desktop)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' button",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}
