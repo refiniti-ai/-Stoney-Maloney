@@ -185,6 +185,13 @@
         "heading": "Ingredient Transparency"
       }
     },
+    "immersive_banner": {
+      "type": "immersive-banner",
+      "settings": {
+        "heading": "Healing skincare, honestly made",
+        "overlay": 40
+      }
+    },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
