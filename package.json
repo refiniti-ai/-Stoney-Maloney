@@ -1,0 +1,12 @@
+{
+  "name": "stoney-maloney",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "theme:dev": "shopify theme dev",
+    "theme:push": "shopify theme push"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3.60.0"
+  }
+}

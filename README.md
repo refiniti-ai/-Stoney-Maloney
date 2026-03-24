@@ -44,28 +44,38 @@ Custom Shopify Liquid theme for [Stoney Maloney USA](https://stoney-maloney-usa.
 
 ## Development
 
-### Shopify CLI
+### Prerequisites
 
-1. Install [Shopify CLI](https://shopify.dev/docs/themes/tools/cli/install).
-2. From the project root:
+1. [Node.js](https://nodejs.org/) 18+
+2. Shopify store access
+
+### Setup
 
 ```bash
-shopify theme dev
+npm install
 ```
-
-This starts a local preview and syncs changes to your store.
 
 ### Push theme to Shopify
 
-```bash
-shopify theme push
-```
-
-### Pull existing theme
+You must be logged in to Shopify (this will open a browser for auth):
 
 ```bash
-shopify theme pull
+npm run theme:push
 ```
+
+Or with the Shopify CLI directly:
+
+```bash
+npx shopify theme push --store stoney-maloney-usa.myshopify.com
+```
+
+### Local development with live preview
+
+```bash
+npm run theme:dev
+```
+
+Starts a local preview that syncs changes to your store in real time.
 
 ## Sections (Theme Editor)
 
