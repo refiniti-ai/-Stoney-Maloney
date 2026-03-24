@@ -6,7 +6,7 @@ const storefrontToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN 
 export const shopifyClient = storefrontToken
   ? createStorefrontApiClient({
       storeDomain,
-      apiVersion: '2025-01',
+      apiVersion: '2025-04',
       publicAccessToken: storefrontToken,
     })
   : null;
