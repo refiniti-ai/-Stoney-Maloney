@@ -3,6 +3,7 @@
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 
 :root {
+  --header-h: 4.5rem;
   --color-orange: #E85D04;
   --color-orange-dark: #C94D03;
   --color-cream: #FDF8F3;

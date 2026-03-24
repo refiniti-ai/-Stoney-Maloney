@@ -1,10 +1,12 @@
-<section class="real-results">
+<section class="real-results" data-nav-theme="dark">
   <div class="real-results__inner">
-    <h2 class="real-results__title">{{ section.settings.heading }}</h2>
+    <h2 class="real-results__title reveal-mask">
+      <span class="reveal-mask__inner">{{ section.settings.heading }}</span>
+    </h2>
     <p class="real-results__subtitle">{{ section.settings.subtitle }}</p>
     <div class="real-results__grid">
       {% for block in section.blocks %}
-        <div class="real-results__item" {{ block.shopify_attributes }}>
+        <div class="real-results__item card card-hover" {{ block.shopify_attributes }}>
           {% if block.settings.image != blank %}
             <div class="real-results__media">
               {{ block.settings.image | image_url: width: 400 | image_tag }}

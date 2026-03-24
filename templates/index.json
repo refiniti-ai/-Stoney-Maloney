@@ -11,6 +11,20 @@
         "text_color": "#FDF8F3"
       }
     },
+    "story_parallax": {
+      "type": "story-parallax",
+      "blocks": {
+        "slide_1": { "type": "slide", "settings": {} },
+        "slide_2": { "type": "slide", "settings": {} },
+        "slide_3": { "type": "slide", "settings": {} }
+      },
+      "block_order": ["slide_1", "slide_2", "slide_3"],
+      "settings": {
+        "scroll_vh": 320,
+        "heading": "From pasture to jar",
+        "subheading": "Grass-fed tallow, slow-rendered and blended with care—skincare that honors tradition."
+      }
+    },
     "what_is_tallow": {
       "type": "what-is-tallow",
       "settings": {
@@ -206,12 +220,14 @@
   },
   "order": [
     "hero",
+    "story_parallax",
     "what_is_tallow",
     "benefits",
     "product_showcase",
     "real_results",
     "brand_story",
     "ingredients",
+    "immersive_banner",
     "testimonials",
     "retail_events"
   ]

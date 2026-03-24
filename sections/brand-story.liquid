@@ -1,7 +1,9 @@
-<section class="brand-story">
+<section class="brand-story" data-nav-theme="dark">
   <div class="brand-story__inner">
     <div class="brand-story__content">
-      <h2 class="brand-story__title">{{ section.settings.heading }}</h2>
+      <h2 class="brand-story__title reveal-mask">
+        <span class="reveal-mask__inner">{{ section.settings.heading }}</span>
+      </h2>
       <div class="brand-story__body rte">{{ section.settings.body }}</div>
       <ul class="brand-story__values">
         {% if section.settings.value1 != blank %}<li>{{ section.settings.value1 }}</li>{% endif %}

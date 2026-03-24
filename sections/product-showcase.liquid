@@ -1,11 +1,13 @@
-<section class="product-showcase">
+<section class="product-showcase" data-nav-theme="dark">
   <div class="product-showcase__inner">
-    <h2 class="product-showcase__title">{{ section.settings.heading }}</h2>
+    <h2 class="product-showcase__title reveal-mask">
+      <span class="reveal-mask__inner">{{ section.settings.heading }}</span>
+    </h2>
 
     {% if section.settings.collection != blank %}
       {% assign collection = collections[section.settings.collection] %}
       {% for product in collection.products limit: 2 %}
-        <article class="product-showcase__item">
+        <article class="product-showcase__item card card-hover">
           <div class="product-showcase__media">
             {% if product.featured_image %}
               {{ product.featured_image | image_url: width: 800 | image_tag: class: 'product-showcase__img', loading: 'lazy', widths: '400, 600, 800' }}
@@ -27,7 +29,7 @@
     {% else %}
       {% comment %} Fallback when no collection selected - show placeholder product blocks {% endcomment %}
       {% for block in section.blocks %}
-        <article class="product-showcase__item" {{ block.shopify_attributes }}>
+        <article class="product-showcase__item card card-hover" {{ block.shopify_attributes }}>
           <div class="product-showcase__media">
             {% if block.settings.image != blank %}
               {{ block.settings.image | image_url: width: 800 | image_tag: class: 'product-showcase__img' }}

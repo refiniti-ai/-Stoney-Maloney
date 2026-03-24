@@ -1,10 +1,42 @@
 /* Stoney Maloney – Premium skincare theme */
 
-/* ========== Header ========== */
+/* ========== Header (Savor-style: fixed + scroll-linked theme) ========== */
 .header--stoney {
-  background: var(--color-cream);
-  border-bottom: 1px solid rgba(232, 93, 4, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   padding: 1rem 0;
+  background: rgba(253, 248, 243, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(232, 93, 4, 0.15);
+  transition: background 0.45s ease, border-color 0.45s ease, backdrop-filter 0.45s ease;
+}
+.header--stoney[data-nav-theme="light"] {
+  background: rgba(0, 0, 0, 0.12);
+  border-bottom-color: rgba(253, 248, 243, 0.2);
+}
+.header--stoney[data-nav-theme="light"] .header__nav-link,
+.header--stoney[data-nav-theme="light"] .header__cart {
+  color: var(--color-cream);
+}
+.header--stoney[data-nav-theme="light"] .header__nav-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.header--stoney[data-nav-theme="light"] .header__cart:hover {
+  color: #fff;
+}
+.header--stoney[data-nav-theme="dark"] .header__nav-link {
+  color: var(--color-text);
+}
+.header--stoney[data-nav-theme="dark"] .header__nav-link:hover {
+  color: var(--color-orange);
+}
+.header--stoney[data-nav-theme="dark"] .header__cart {
+  color: var(--color-text);
 }
 .header--stoney .header__inner {
   max-width: 1280px;
@@ -41,7 +73,7 @@
   color: var(--hero-text);
   display: flex;
   align-items: center;
-  padding: 4rem 2rem;
+  padding: calc(var(--header-h) + 3rem) 2rem 4rem;
   position: relative;
   overflow: hidden;
 }
@@ -104,6 +136,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.hero__zoom-wrap {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero__zoom-inner {
+  overflow: hidden;
+  border-radius: 40px;
+  line-height: 0;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.hero__zoom-inner .hero__product-img {
+  max-height: 70vh;
 }
 .hero__product-img {
   max-width: 100%;
@@ -508,6 +556,13 @@
   color: var(--color-text-muted);
   margin: 0 0 2rem;
 }
+.retail-events__media--parallax {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.retail-events__parallax-inner {
+  will-change: transform;
+}
 .retail-events__media {
   margin-bottom: 2rem;
   border-radius: 16px;
@@ -516,6 +571,15 @@
 .retail-events__img { width: 100%; height: auto; }
 .retail-events__placeholder { width: 100%; min-height: 300px; background: #eee; }
 .retail-events__ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.retail-events__btn.btn-savor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.retail-events__btn.btn-savor:hover {
+  transform: none;
+}
 .retail-events__btn {
   display: inline-block;
   padding: 0.875rem 1.75rem;
@@ -627,7 +691,10 @@
 .product-card__title { margin: 0 0 0.25rem; font-size: 1rem; font-weight: 600; }
 .product-card__price { font-weight: 600; color: #555; }
 
-.collection-page, .product-page { padding: 2rem 0; }
+.collection-page, .product-page {
+  padding: 2rem 0;
+  padding-top: calc(var(--header-h) + 2rem);
+}
 .collection-page__inner, .product-page__inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 .product-page__inner { display: grid; gap: 2rem; }
 @media (min-width: 768px) { .product-page__inner { grid-template-columns: 1fr 1fr; } }

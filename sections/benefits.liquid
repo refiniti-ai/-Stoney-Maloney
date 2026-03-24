@@ -1,9 +1,11 @@
-<section class="benefits">
+<section class="benefits" data-nav-theme="dark">
   <div class="benefits__inner">
-    <h2 class="benefits__title">{{ section.settings.heading }}</h2>
+    <h2 class="benefits__title reveal-mask">
+      <span class="reveal-mask__inner">{{ section.settings.heading }}</span>
+    </h2>
     <div class="benefits__grid">
       {% for block in section.blocks %}
-        <div class="benefits__item" {{ block.shopify_attributes }}>
+        <div class="benefits__item card card-hover" {{ block.shopify_attributes }}>
           <div class="benefits__icon">
             {% if block.settings.icon != blank %}
               {{ block.settings.icon | image_url: width: 80 | image_tag }}

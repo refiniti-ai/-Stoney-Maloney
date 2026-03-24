@@ -1,9 +1,11 @@
-<section class="testimonials">
+<section class="testimonials" data-nav-theme="dark">
   <div class="testimonials__inner">
-    <h2 class="testimonials__title">{{ section.settings.heading }}</h2>
+    <h2 class="testimonials__title reveal-mask">
+      <span class="reveal-mask__inner">{{ section.settings.heading }}</span>
+    </h2>
     <div class="testimonials__grid">
       {% for block in section.blocks %}
-        <blockquote class="testimonials__item" {{ block.shopify_attributes }}>
+        <blockquote class="testimonials__item card card-hover" {{ block.shopify_attributes }}>
           <p class="testimonials__quote">"{{ block.settings.quote }}"</p>
           {% if block.settings.author != blank %}
             <cite class="testimonials__author">— {{ block.settings.author }}</cite>

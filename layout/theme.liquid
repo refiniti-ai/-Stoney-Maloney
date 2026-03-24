@@ -13,8 +13,11 @@
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
   {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ 'effects.css' | asset_url | stylesheet_tag }}
 </head>
-<body class="template-{{ template.name }}">
+<body class="template-{{ template.name }} page-wrap">
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress__fill"></span></div>
   {% sections 'header-group' %}
 
   <main id="MainContent" role="main" tabindex="-1">
@@ -23,6 +26,10 @@
 
   {% sections 'footer-group' %}
 
-  {{ 'theme.js' | asset_url | script_tag }}
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="{{ 'motion.js' | asset_url }}" defer></script>
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
 </body>
 </html>

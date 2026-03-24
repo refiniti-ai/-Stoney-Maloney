@@ -1,0 +1,296 @@
+/* Savor-inspired motion layer – Stoney Maloney palette preserved */
+
+.page-wrap {
+  overflow-x: clip;
+  min-height: 100vh;
+}
+
+/* Fluid display scale (reference: clamp + vw) */
+.fluid-display {
+  font-size: clamp(2.5rem, 4vw + 1.5rem, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.fluid-lead {
+  font-size: clamp(1rem, 0.5vw + 0.9rem, 1.25rem);
+  line-height: 1.55;
+}
+
+/* Savor-style button: dash + word slide on hover */
+.btn-savor {
+  --btn-dash: 2.2em;
+  --btn-gap: 0.35em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  position: relative;
+  transition: background-color 0.45s ease;
+}
+
+.btn-savor__word {
+  display: inline-block;
+  transition: transform 0.75s cubic-bezier(0, 0, 0, 1);
+}
+
+.btn-savor__dash {
+  display: inline-block;
+  vertical-align: middle;
+  width: var(--btn-dash);
+  height: max(1px, 0.07em);
+  background: currentColor;
+  margin: 0 var(--btn-gap);
+  transform-origin: center;
+  transition: transform 0.75s cubic-bezier(0, 0, 0, 1), opacity 0.3s ease;
+}
+
+.btn-savor:hover .btn-savor__dash {
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 0.75s cubic-bezier(0, 0, 0, 1), opacity 0.25s ease 0.45s;
+}
+
+.btn-savor:hover .btn-savor__word--left {
+  transform: translateX(calc(var(--btn-dash) / 2 + var(--btn-gap) / 2));
+}
+
+.btn-savor:hover .btn-savor__word--right {
+  transform: translateX(calc(-1 * (var(--btn-dash) / 2 + var(--btn-gap) / 2)));
+}
+
+/* Card hover overlay (ImageCTAGrid-inspired) */
+.card-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-cream);
+  opacity: 0;
+  transform: scale(0.85, 1);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.33, 1, 0.48, 0.89);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: soft-light;
+}
+
+.card-hover:hover::after {
+  opacity: 0.12;
+  transform: scale(1);
+}
+
+.card-hover > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Story parallax strip */
+.story-parallax {
+  position: relative;
+  min-height: var(--story-height, 350vh);
+  z-index: 1;
+}
+
+.story-parallax__pin {
+  position: sticky;
+  top: 0;
+  height: 100lvh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-orange);
+  color: var(--color-cream);
+}
+
+.story-parallax__media {
+  position: absolute;
+  inset: 0;
+}
+
+.story-parallax__layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.story-parallax__layer:first-child {
+  opacity: 1;
+}
+
+.story-parallax__layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+.story-parallax__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(44, 36, 25, 0.55), transparent 45%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.story-parallax__text {
+  position: relative;
+  z-index: 3;
+  max-width: 42rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.story-parallax__text .fluid-display {
+  margin: 0 0 1rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+}
+
+.story-parallax__text p {
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* Immersive banner (full-bleed sticky) */
+.immersive-banner {
+  position: relative;
+  min-height: 220lvh;
+  z-index: 0;
+  contain: content;
+}
+
+.immersive-banner__pin {
+  position: sticky;
+  top: 0;
+  height: 100lvh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  color: var(--color-cream);
+  overflow: hidden;
+}
+
+.immersive-banner__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.immersive-banner__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+  will-change: transform;
+}
+
+.immersive-banner__shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.immersive-banner__ui {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 2rem 6rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.immersive-banner__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
+  line-height: 1.05;
+  margin: 0;
+  max-width: 12ch;
+}
+
+/* Line mask reveal (CSS fallback; GSAP enhances) */
+.reveal-mask {
+  overflow: hidden;
+}
+
+.reveal-mask__inner {
+  display: block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+/* Parallax targets */
+[data-parallax-speed] {
+  will-change: transform;
+}
+
+.hero .hero__btn.btn-savor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.hero .hero__btn.btn-savor:hover {
+  transform: none;
+}
+
+/* Film grain + scroll progress (Savor / editorial polish) */
+.film-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.has-smooth-scroll .film-grain {
+  opacity: 0.035;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100lvh;
+  height: 100dvh;
+  z-index: 99;
+  pointer-events: none;
+  background: rgba(44, 36, 25, 0.08);
+}
+
+.scroll-progress__fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-orange);
+  transform: scaleY(0);
+  transform-origin: top center;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .scroll-progress {
+    width: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain,
+  .scroll-progress {
+    display: none !important;
+  }
+}

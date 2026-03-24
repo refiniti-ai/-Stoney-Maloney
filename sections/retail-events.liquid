@@ -1,17 +1,40 @@
-<section class="retail-events">
+{% assign ev_words = section.settings.events_btn_label | split: ' ' %}
+{% assign ev_first = ev_words | first %}
+{% capture ev_right %}{% for w in ev_words offset: 1 %}{{ w }}{% unless forloop.last %} {% endunless %}{% endfor %}{% endcapture %}
+{% assign fw_words = section.settings.follow_btn_label | split: ' ' %}
+{% assign fw_first = fw_words | first %}
+{% capture fw_right %}{% for w in fw_words offset: 1 %}{{ w }}{% unless forloop.last %} {% endunless %}{% endfor %}{% endcapture %}
+
+<section class="retail-events" data-nav-theme="dark">
   <div class="retail-events__inner">
-    <h2 class="retail-events__title">{{ section.settings.heading }}</h2>
+    <h2 class="retail-events__title reveal-mask">
+      <span class="reveal-mask__inner">{{ section.settings.heading }}</span>
+    </h2>
     <p class="retail-events__subtitle">{{ section.settings.subtitle }}</p>
-    <div class="retail-events__media">
+    <div class="retail-events__media retail-events__media--parallax">
       {% if section.settings.image != blank %}
-        {{ section.settings.image | image_url: width: 1000 | image_tag: class: 'retail-events__img' }}
+        <div class="retail-events__parallax-inner" data-parallax-speed="0.07">
+          {{ section.settings.image | image_url: width: 1000 | image_tag: class: 'retail-events__img' }}
+        </div>
       {% else %}
         <div class="retail-events__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
       {% endif %}
     </div>
     <div class="retail-events__ctas">
-      <a href="{{ section.settings.events_url | default: '#' }}" class="retail-events__btn">{{ section.settings.events_btn_label }}</a>
-      <a href="{{ section.settings.follow_url | default: '#' }}" class="retail-events__btn retail-events__btn--secondary">{{ section.settings.follow_btn_label }}</a>
+      <a href="{{ section.settings.events_url | default: '#' }}" class="retail-events__btn btn-savor btn-magnetic">
+        <span class="btn-savor__word btn-savor__word--left">{{ ev_first }}</span>
+        {% if ev_right != blank %}
+          <span class="btn-savor__dash" aria-hidden="true"></span>
+          <span class="btn-savor__word btn-savor__word--right">{{ ev_right }}</span>
+        {% endif %}
+      </a>
+      <a href="{{ section.settings.follow_url | default: '#' }}" class="retail-events__btn retail-events__btn--secondary btn-savor btn-magnetic">
+        <span class="btn-savor__word btn-savor__word--left">{{ fw_first }}</span>
+        {% if fw_right != blank %}
+          <span class="btn-savor__dash" aria-hidden="true"></span>
+          <span class="btn-savor__word btn-savor__word--right">{{ fw_right }}</span>
+        {% endif %}
+      </a>
     </div>
   </div>
 </section>

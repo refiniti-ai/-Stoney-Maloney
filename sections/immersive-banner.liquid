@@ -1,0 +1,54 @@
+{% comment %}
+  Full-bleed sticky banner (Savor BannerFullbleed-inspired): deep scroll + parallax background.
+{% endcomment %}
+<section class="immersive-banner" data-immersive-banner data-nav-theme="light">
+  <div class="immersive-banner__pin">
+    <div class="immersive-banner__bg">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', sizes: '100vw', widths: '800, 1200, 2000, 2400' }}
+      {% else %}
+        <img src="{{ 'hero-product.png' | asset_url }}" alt="" width="1200" height="1200">
+      {% endif %}
+    </div>
+    <div class="immersive-banner__shade" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }};"></div>
+    <div class="immersive-banner__ui">
+      {% if section.settings.heading != blank %}
+        <h2 class="immersive-banner__title reveal-mask">
+          <span class="reveal-mask__inner">{{ section.settings.heading }}</span>
+        </h2>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Immersive banner",
+  "class": "section-immersive-banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Healing skincare, honestly made"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay",
+      "min": 20,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "label": "Dark overlay",
+      "default": 40
+    }
+  ],
+  "presets": [{ "name": "Immersive banner" }]
+}
+{% endschema %}
