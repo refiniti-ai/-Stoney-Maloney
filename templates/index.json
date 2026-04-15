@@ -86,15 +86,15 @@
           "settings": {
             "title": "Miracle Recovery Rub",
             "description": "Nourishing tallow-based balm for skin recovery. Deeply moisturizes and soothes.",
-            "ingredients": "5,000mg Full-Spectrum Hemp CBD,Menthol Crystals , Botanical Oils, Essential Oils"
+            "ingredients": "Grass-fed tallow, beeswax, essential oils"
           }
         },
         "product_2": {
           "type": "product",
           "settings": {
             "title": "Tallow Lip Balm",
-            "description": "Treat your lips to pure, lasting nourishment with our handcrafted Tallow & Beeswax Lip Balm-made from grass-fed tallow, beeswax, and coconut oil for gentle, seed oil-free care. Protects against dryness; small-batch and easy to carry everywhere.",
-            "ingredients": "100% Grass-Fed, Grass-Finished Beef Tallow, Cocos Nucifera (Coconut) Oil, Cera Alba (Beeswax), Essential Oils (Varies by flavor)"
+            "description": "Hydrating lip care with the same nourishing ingredients.",
+            "ingredients": "Tallow, beeswax, natural flavor"
           }
         }
       },
